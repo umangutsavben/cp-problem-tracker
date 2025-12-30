@@ -1,0 +1,14 @@
+/*
+Platform: Codeforces
+Rating: 900
+Problem: <paste link>
+
+Status: Took Hint
+Mistake:
+- Missed edge case when l > r
+
+Learning:
+- Always shrink window before updating answer
+
+Re-solve After: 7 days
+*/
