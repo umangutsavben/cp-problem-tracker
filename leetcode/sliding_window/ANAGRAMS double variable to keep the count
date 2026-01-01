@@ -1,0 +1,38 @@
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        map<char,int>mp;
+        int ct; // this is the variable to keep the count of the no. of unique elements in the current window !!
+      /*
+      the best part is that we have to keep the count of the elements present in the window at the moment so for that we use map but it will not tell when all the characters are present with the same frequency or not we wont be able to know it ... so we use another variable which will just keep the no, of unique elements in the pattern given has.. and this will just have a binary kind of idea thats is like each element in the pattern will have 0 or 1 and if its one then count of that element in the window is not same as of the pattern and if its zero then its like the count of that same element is same as fo patter and once this variable becomes zero this means all the elemets has the same amount of the count !
+      */
+        vector<int>ans;
+        int i=0,j=0;
+        for(auto it:p){
+            mp[it]++;
+        }
+        ct = mp.size();
+        while(j<s.size()){
+            if(mp.find(s[j])!=mp.end()){
+                mp[s[j]]--;
+                if(mp[s[j]]==0){
+                    ct--;
+                }
+            }
+            if(j-i+1==p.size()){
+                if(ct==0){
+                    ans.push_back(i);
+                }
+                if(mp.find(s[i])!=mp.end()){
+                    mp[s[i]]++;
+                    if(mp[s[i]]==1){
+                        ct++;
+                    }
+                }
+                i++;
+            }
+            j++;
+        }
+        return ans;
+    }
+};
