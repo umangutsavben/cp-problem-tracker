@@ -1,0 +1,29 @@
+class Solution {
+public:
+    long long minEnd(int n, int x) {
+        int rem = n-1;
+        int tmp =x;
+        long long  lst=x;
+        int ans=x;
+        int i=0;
+        while(rem){
+            if(((lst>>i)&1)==0){
+                if((rem&1)==1){
+                    lst = lst|(1LL<<i);
+                }
+                rem = rem>>1;
+            }
+            i++;
+        }
+        return lst;
+    }
+};
+
+
+main observation was to see how to put the number after the 
+we have to ignore 0 0 0 0 0 0 0 1 0 1 0 1 1 1 0 1 0 1
+                                x   x   x x x   x   x
+ignore the 1 then we have to put all the zeros with the bits of the n!!
+cuz to inc we have to shift the x (keeping the one in place) by n-1 
+
+refer to the solution --> https://neetcode.io/solutions/minimum-array-end
